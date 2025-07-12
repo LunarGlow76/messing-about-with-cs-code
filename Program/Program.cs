@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.ComponentModel;
+using System.Runtime.ExceptionServices;
+using System.Runtime.InteropServices;
 
 internal class Program
 {
@@ -262,7 +264,40 @@ internal class Program
         }
         */
 
-      //Write a bogosort program and safe cracker style program 
+     //Safe Cracker Code cracker safe :0
+        Console.Write("Please enter a 2 digit code > ");
+        string input = Console.ReadLine();
+        int.TryParse(input, out int code);
+
+        if (code < 10 || code > 99)
+        {
+            Console.WriteLine("Please enter a valid 2 digit code.");
+        }
+        else
+        {
+            Random random = new Random();
+            bool numberFound = false;
+            int attempts = 0;
+
+            while (!numberFound)
+            {
+                int guess = random.Next(0, 100);
+                Console.WriteLine(guess);
+                attempts++;
+                if (guess == code)
+                {
+                    Console.WriteLine("I found your code!");
+                    break;
+                }
+
+                if (attempts > 200)
+                {
+                    Console.WriteLine("Tried too many times, stopping search.");
+                    break;
+                }
+            }
+        }
 
     }
+
 }
